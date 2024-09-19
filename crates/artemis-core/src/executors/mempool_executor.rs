@@ -8,9 +8,10 @@ use anyhow::{Context, Result};
 use async_trait::async_trait;
 use ethers::{
     providers::Middleware,
-    types::{transaction::eip2718::TypedTransaction, U256},
+    types::{transaction::eip2718::TypedTransaction,U256},
 };
-use alloy::rpc::types::TransactionRequest,
+use alloy::rpc::types::TransactionRequest;
+
 /// An executor that sends transactions to the mempool.
 pub struct MempoolExecutor<M> {
     client: Arc<M>,
@@ -25,10 +26,17 @@ pub struct GasBidInfo {
     /// Percentage of bid profit to use for gas
     pub bid_percentage: u64,
 }
+pub struct GasBidInfoTransactionRequest {
+    /// Total profit expected from opportunity
+    pub total_profit: alloy::primitives::U256,
+
+    /// Percentage of bid profit to use for gas
+    pub bid_percentage: alloy::primitives::U256,
+}
 #[derive(Debug, Clone)]
 pub struct SubmitTxToMempoolTransactionRequest {
     pub tx: TransactionRequest,
-    pub gas_bid_info: Option<GasBidInfo>,
+ //   pub gas_bid_info: Option<GasBidInfo>,
 }
 #[derive(Debug, Clone)]
 pub struct SubmitTxToMempool {
