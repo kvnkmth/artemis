@@ -23,39 +23,6 @@ At its core, Artemis is architected as an event processing pipeline. The library
 2. *Strategies*: *Strategies* contain the core logic required for each MEV opportunity. They take in *events* as inputs, and compute whether any opportunities are available (for example, a strategy might listen to a stream of marketplace orders to see if there are any cross-exchange arbs). *Strategies* produce *actions*.
 3. *Executors*: *Executors* process *actions*, and are responsible for executing them in different domains (for example, submitting txs, posting off-chain orders, etc.).
 
-## Strategies 
-
-The following strategies have been implemented: 
-
-- [Opensea/Sudoswap NFT Arbitrage](/crates/strategies/opensea-sudo-arb/): A strategy implementing atomic, cross-market NFT arbitrage between Seaport and Sudoswap.
-
-## Build, Test and Run
-
-First, make sure the following are installed: 
-1. [Anvil](https://github.com/foundry-rs/foundry/tree/master/crates/anvil#installing-from-source)
-
-In order to build, first clone the github repo: 
-
-```sh
-git clone https://github.com/kvnkmth/artemis
-cd artemis
-```
-
-Next, run tests with cargo: 
-
-```sh
-cargo test --all
-```
-
-In order to run the opensea sudoswap arbitrage strategy, you can run the following command: 
-
-```sh
-cargo run -- --wss <INFURA_OR_ALCHEMY_KEY> --opensea-api-key <OPENSEA_API_KEY> --private-key <PRIVATE_KEY> --arb-contract-address <ARB_CONTRACT_ADDRESS> --bid-percentage <BID_PERCENTAGE>
-```
-
-where `ARB_CONTRACT_ADDRESS` is the address to which you deploy the [arb contract](/crates/strategies/opensea-sudo-arb/contracts/src/SudoOpenseaArb.sol).
-
-
 ## Acknowledgements
 
 - [subway](https://github.com/libevm/subway)
