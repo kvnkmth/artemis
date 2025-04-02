@@ -6,7 +6,6 @@ Bare bones Artemis without the alloy evm dependancies
 
 ![](./assets/artemis.png)
 
-
 [![CI status](https://github.com/paradigmxyz/reth/workflows/ci/badge.svg)][gh-ci]
 [![Telegram Chat][tg-badge]][tg-url]
 
